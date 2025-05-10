@@ -2,7 +2,9 @@ spring:
   application:
     name: integration-with-kafka
   kafka:
-    bootstrap-servers: 192.168.0.125:9092
+    bootstrap-servers: 192.168.0.124:9092
+    streams:
+      application-id: integration-with-kafka
     consumer:
       group-id: group-id-79
       auto-offset-reset: earliest
