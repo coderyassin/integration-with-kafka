@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Test</title>
+</head>
+<body>
+<h1 style="color: red">Little messages to my love  Chaime</h1>
+<div id="word" style="color: dodgerblue"></div>
+
+<script>
+    const socket = new WebSocket("ws://localhost:8080/ws/words");
+
+    socket.onmessage = function(event) {
+        document.getElementById("word").innerText = event.data;
+    };
+
+    socket.onerror = function(error) {
+        console.error("WebSocket error:", error);
+    };
+</script>
+</body>
+</html>

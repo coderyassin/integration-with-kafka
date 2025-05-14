@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>STOMP WebSocket Client</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+</head>
+<body>
+<h1>WebSocket STOMP Client</h1>
+<script>
+    var socket = new WebSocket('ws://localhost:8080/ws-words/websocket');
+    var client = Stomp.over(socket);
+
+    client.connect({}, function (frame) {
+        console.log('Connected: ' + frame);
+        client.subscribe('/topic/words', function (messageOutput) {
+            console.log("Received: " + messageOutput.body);
+        });
+    });
+</script>
+</body>
+</html>
